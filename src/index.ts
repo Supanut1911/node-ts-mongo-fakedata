@@ -27,7 +27,7 @@ app.post('/order', async(req, res) => {
   Array.from({length: 10}).forEach(async () => {
     const order = new Order({
       customer_data: {
-        customerName: faker.person.fullName(),
+        customerName: faker.helpers.arrayElement(["สมชาย โอเคร", "ขวัญขยาดี กินดี", "จันทร์กะพ้อ อยู่ไทย", "ณัฐวดี ณ ภูเก็ต", "บงกชเพชร  กินยา", "ภัสสร เท่จัด", "มนฤดี  มินตรา", "รุจิษยา อยู่ไหน", "โยดา เจได", "จอน ซีน่า", "กวนอู สามก๊ก" ]),
         tel: faker.phone.number(),
         email: faker.internet.email(),
         address: faker.location.streetAddress(),
@@ -37,7 +37,7 @@ app.post('/order', async(req, res) => {
         zipcode: faker.location.zipCode(),
       },
       express: {
-        expressName: faker.person.fullName,
+        expressName: faker.helpers.arrayElement(['NINJA', 'THAIPOST', 'FLASH', 'KERRY', 'DHL', 'UPS', 'FEDEX', 'SCG', 'TNT', 'EMS', 'POSTAL', 'SME', 'SKYNET', 'J&T', 'GRAB', 'LINEMAN', 'LALAMOVE']),
         expressCost: faker.number.int(),
         trackingNumber: faker.string.uuid(),
       },
@@ -67,6 +67,13 @@ app.post('/order', async(req, res) => {
     }
   })
   
+})
+
+app.delete("/order", async(req, res) => {
+  await Order.deleteMany()
+  res.json({
+    message: 'Orders deleted'
+  })
 })
 
 let server
