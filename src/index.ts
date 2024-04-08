@@ -38,4 +38,28 @@ mongoose.connection.on('disconnected', () => {
   console.log('Mongoose connected is disconnected ...')
 })
 
+process.on('SIGINT', ()=> {
+  console.log('SIGINT recieved');
+  server.close(() => {
+    console.log('Server is closed...');
+    //... other process ...
+    mongoose.connection.close().then(() => {
+        process.exit(0)
+    })
+    //... other process ...
+  })
+})
+
+process.on('SIGTERM', ()=> {
+  console.log('SIGTERM recieved');
+  server.close( async () => {
+    console.log('Server is closed...');
+    //... other process ...
+    mongoose.connection.close().then(()=> {
+      process.exit(0)
+    })
+    //... other process ...
+  })
+})
+
 startServer()
