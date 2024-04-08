@@ -1,7 +1,5 @@
 APP: Node TS
 
-Loadtest: K6
+DB: Mongo DB
 
-Gathering data: InfluxDB
-
-Visualize: Grafana
+Data mock: Fakerjs
