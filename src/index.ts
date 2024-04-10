@@ -24,11 +24,11 @@ app.get('/order', async(req, res) => {
 
 app.post('/order', async(req, res) => {
   let promises = []
-  Array.from({length: 10}).forEach(async () => {
+  Array.from({length: 30}).forEach(async () => {
     const order = new Order({
       customer_data: {
         customerName: faker.helpers.arrayElement(["สมชาย โอเคร", "ขวัญขยาดี กินดี", "จันทร์กะพ้อ อยู่ไทย", "ณัฐวดี ณ ภูเก็ต", "บงกชเพชร  กินยา", "ภัสสร เท่จัด", "มนฤดี  มินตรา", "รุจิษยา อยู่ไหน", "โยดา เจได", "จอน ซีน่า", "กวนอู สามก๊ก" ]),
-        tel: faker.phone.number(),
+        tel: faker.helpers.arrayElement(["081-234-5678", "082-345-6789", "083-456-7890", "084-567-8901", "085-678-9012", "086-789-0123", "087-890-1234", "088-901-2345", "089-012-3456", "090-123-4567"]),
         email: faker.internet.email(),
         address: faker.location.streetAddress(),
         addressCity: faker.location.city(),

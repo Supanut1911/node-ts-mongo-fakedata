@@ -36,8 +36,8 @@ interface IOrder extends Document {
   const orderSchema: Schema = new mongoose.Schema({
     customer_data: {
       customerName: { type: String, required: true},
-      tel: { type: String, required: true},
-      email: { type: String, required: true},
+      tel: { type: String, required: true },
+      email: { type: String, required: true },
       address: { type: String, required: true},
       addressCity: { type: String, required: true},
       addressSubCity: { type: String, required: true},
@@ -65,6 +65,7 @@ interface IOrder extends Document {
     channel: { type: String, required: true},
     type: { type: String, required: true},
   }, {versionKey: false})
+
 
 const Order = mongoose.model<IOrder>('Order', orderSchema)
 
